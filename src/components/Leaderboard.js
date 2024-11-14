@@ -20,9 +20,12 @@ const Leaderboard = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/leaderboard", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://ctf-backend-03il.onrender.com",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       // Transform the data to match our component's structure
       const formattedData = response.data.map((player, index) => ({
