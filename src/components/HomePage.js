@@ -14,7 +14,7 @@ const HomePage = () => {
           </ul>
         </nav>
         <div className="home-content">
-          <h1>Welcome to Chhakrview CTF</h1>
+          <h1>Welcome to CHAKARAVYUH-1.0 CTF</h1>
           <p>"Unravel the layers, conquer the challenge!"</p>
           <img src="./images/image.png" alt="CTF Challenge" className="ctf-image" />
           <div className="info-box">
