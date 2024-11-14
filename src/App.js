@@ -7,6 +7,7 @@ import ResetPassword from './components/ResetPassword';
 import Signup from './components/Signup';
 import HomePage from './components/HomePage';
 import ProfilePage from './components/ProfilePage';
+import ChallengeDashboard from './components/ChallengeDashboard'; // Corrected import
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <li><Link to="/signup">Sign Up</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
             <li><Link to="/profile">Profile</Link></li>
+            <li><Link to="/challenge-dashboard">Challenge</Link></li> {/* Updated link path */}
           </ul>
         </nav>
 
@@ -31,6 +33,7 @@ function App() {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/challenge-dashboard" element={<ChallengeDashboard />} /> {/* New Route */}
           </Routes>
         </div>
       </div>
