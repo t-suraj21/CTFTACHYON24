@@ -1,0 +1,141 @@
+/* src/components/HomePage.css */
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Full-screen background image */
+.home-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  /* src/components/HomePage.css */
+
+.background-image {
+    /* background-image: url('../images/2.jpg'); */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Navbar */
+  .navbar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Home content */
+  .home-content {
+    max-width: 800px;
+    margin: 0 20px;
+  }
+  
+  .home-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .ctf-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+  }
+  
+  /* Info box for CTF challenge description */
+  .info-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .info-box h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .info-box p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  .cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cta-button a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .home-content h1 {
+      font-size: 2rem;
+    }
+  
+    .home-content p {
+      font-size: 1rem;
+    }
+  
+    .ctf-image {
+      width: 80%;
+    }
+  }
+  
