@@ -1,19 +1,33 @@
 // src/components/ProfilePage.js
-import React, { useState } from 'react';
-import './ProfilePage.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./ProfilePage.css";
 
 const ProfilePage = () => {
-  // State to hold user profile information
-  const [profile, setProfile] = useState({
-    username: 'User123',
-    email: 'user@example.com',
-    challengesCompleted: 10,
-    points: 200,
-    rank: 5,
-  });
-
-  // State to handle editable fields
+  const [profile, setProfile] = useState(null);
   const [editMode, setEditMode] = useState(false);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  const fetchProfile = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get("http://localhost:5000/profile", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setProfile(response.data);
+      setError(null);
+    } catch (err) {
+      setError("Failed to fetch profile data");
+      console.error("Profile fetch error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleEditToggle = () => {
     setEditMode(!editMode);
@@ -23,27 +37,32 @@ const ProfilePage = () => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
   };
 
-  const handleSave = () => {
-    setEditMode(false);
-    // Here, you would typically send the updated profile data to the backend
-    console.log('Profile updated:', profile);
+  const handleSave = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(
+        "http://localhost:5000/profile",
+        { email: profile.email },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setEditMode(false);
+      fetchProfile();
+      setError(null);
+    } catch (err) {
+      setError(err.response?.data?.message || "Error updating profile");
+    }
   };
+
+  if (loading) return <div>Loading profile...</div>;
+  if (error) return <div className="error-message">{error}</div>;
+  if (!profile) return <div>No profile data available</div>;
 
   return (
     <div className="profile-container">
       <h2>User Profile</h2>
       <div className="profile-info">
         <label>Username:</label>
-        {editMode ? (
-          <input
-            type="text"
-            name="username"
-            value={profile.username}
-            onChange={handleChange}
-          />
-        ) : (
-          <p>{profile.username}</p>
-        )}
+        <p>{profile.username}</p>
       </div>
       <div className="profile-info">
         <label>Email:</label>
